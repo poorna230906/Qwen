@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flake AI — Qwen Chatbot</title>
+  <meta name="description" content="Flake AI — A premium chatbot powered by the Qwen language model. Beautiful, fast, and free." />
+  <meta name="theme-color" content="#0a0e17" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❄️</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Aurora Background -->
+  <div class="aurora-bg"></div>
+
+  <!-- Snowflake Particles -->
+  <div class="snowflakes"></div>
+
+  <!-- App Container -->
+  <div class="app-container">
+
+    <!-- ── Header ── -->
+    <header class="app-header">
+      <div class="header-brand">
+        <div class="brand-icon">❄️</div>
+        <div class="brand-text">
+          <span class="brand-name">Flake AI</span>
+          <span class="brand-model">Qwen</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="header-btn" id="new-chat" title="New Chat">🗑️</button>
+        <button class="header-btn" id="settings-toggle" title="Settings">⚙️</button>
+      </div>
+    </header>
+
+    <!-- ── Main Area ── -->
+    <div class="chat-main">
+
+      <!-- Chat Area -->
+      <div class="chat-area">
+        <div class="messages-container" id="messages">
+
+          <!-- Welcome Screen -->
+          <div class="welcome-screen">
+            <div class="welcome-icon">❄️</div>
+            <h1 class="welcome-title">Flake AI</h1>
+            <p class="welcome-subtitle">Powered by Qwen — your personal AI assistant. Ask me anything to get started.</p>
+            <div class="welcome-chips">
+              <div class="welcome-chip">Explain quantum computing</div>
+              <div class="welcome-chip">Write a Python script</div>
+              <div class="welcome-chip">Tell me a creative story</div>
+              <div class="welcome-chip">Help me debug code</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+          <div class="input-wrapper">
+            <textarea id="message-input" placeholder="Message Flake AI..." rows="1"></textarea>
+            <button class="send-btn" id="send-btn" title="Send">➤</button>
+          </div>
+          <div class="input-footer">
+            <span class="input-hint">Shift + Enter for new line</span>
+            <span class="char-count" id="char-count">0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Settings Panel ── -->
+      <aside class="settings-panel" id="settings-panel">
+        <div class="settings-inner">
+
+          <div class="settings-header">
+            <h2 class="settings-title">Settings</h2>
+            <button class="settings-close" id="settings-close">✕</button>
+          </div>
+
+          <!-- Status -->
+          <div class="settings-group">
+            <label class="settings-label">Status</label>
+            <div class="status-indicator">
+              <div class="status-dot" id="status-dot"></div>
+              <span class="status-text" id="status-text">No API key set</span>
+            </div>
+          </div>
+
+          <!-- API Key -->
+          <div class="settings-group">
+            <label class="settings-label">API Key</label>
+            <input type="password" class="settings-input" id="api-key" placeholder="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" autocomplete="off" spellcheck="false" />
+            <p class="settings-hint">
+              Get yours at <a href="https://openrouter.ai/settings/keys" target="_blank" rel="noopener">openrouter.ai/settings/keys</a> (free signup).
+            </p>
+          </div>
+
+          <!-- API Host -->
+          <div class="settings-group">
+            <label class="settings-label">API Host (Base URL)</label>
+            <input type="text" class="settings-input" id="api-host" placeholder="https://openrouter.ai/api/v1" autocomplete="off" spellcheck="false" />
+            <p class="settings-hint">
+              The API endpoint base URL. Leave empty to use default OpenRouter.
+            </p>
+          </div>
+
+          <div class="settings-divider"></div>
+
+          <!-- Temperature -->
+          <div class="settings-group">
+            <div class="settings-range-header">
+              <label class="settings-label">Temperature</label>
+              <span class="range-value" id="temperature-value">0.7</span>
+            </div>
+            <input type="range" class="settings-range" id="temperature" min="0.1" max="1.5" step="0.1" value="0.7" />
+            <p class="settings-hint">Lower = more focused. Higher = more creative.</p>
+          </div>
+
+          <!-- Max Tokens -->
+          <div class="settings-group">
+            <label class="settings-label">Max Tokens</label>
+            <input type="number" class="settings-input" id="max-tokens" value="512" min="64" max="2048" step="64" />
+            <p class="settings-hint">Maximum length of the response.</p>
+          </div>
+
+          <div class="settings-divider"></div>
+
+          <!-- Model Info -->
+          <div class="settings-group">
+            <label class="settings-label">Model ID</label>
+            <input type="text" class="settings-input" id="model-id" placeholder="e.g. qwen-plus" autocomplete="off" spellcheck="false" />
+            <p class="settings-hint">Enter any text generation model hosted on Alibaba Cloud DashScope (e.g. qwen-plus, qwen-turbo, qwen-max).</p>
+          </div>
+
+          <div class="settings-divider"></div>
+
+          <!-- Clear Chat -->
+          <button class="clear-btn" id="clear-chat">Clear conversation</button>
+
+        </div>
+      </aside>
+
+    </div>
+
+  </div>
+
+  <!-- Error Toast -->
+  <div class="error-toast" id="error-toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
